@@ -2,7 +2,7 @@
 
 Shen Ting's Curriculum Vitae
 
-[shenting.me/cv/](http://shenting.me/cv/)
+[shenting.me/cv](http://shenting.me/cv)
 
 ###索引
 * [项目经历](#项目经历)
@@ -22,8 +22,6 @@ Shen Ting's Curriculum Vitae
 * [个人简历](http://shenting.me/cv)
 
 个人简历的在线版本，使用flex和响应式布局。
-
-使用Github-pages搭建，并绑定了私有域名。
 
 * [白湯](#)
 
