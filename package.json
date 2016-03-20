@@ -1,0 +1,32 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "description": "Shen Ting's Curriculum Vitae",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pciapcib/cv.git"
+  },
+  "keywords": [
+    "shenting",
+    "cv",
+    "resume",
+    "Front-end"
+  ],
+  "author": "Shen Ting",
+  "license": "MIT",
+  "homepage": "https://github.com/pciapcib/cv",
+  "devDependencies": {
+    "browser-sync": "2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-cache": "0.4.3",
+    "gulp-imagemin": "2.4.0",
+    "gulp-minify-css": "1.2.4",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.5.3"
+  }
+}

@@ -41,9 +41,9 @@ Shen Ting's Curriculum Vitae
 
 * JavaScript、jQuery、Bootstrap
 
-* Photoshop、Git、SEO
+* Photoshop、Git、Gulp
 
-* 性能优化、响应式
+* 性能优化、响应式、SEO
 
 ###教育背景
 
