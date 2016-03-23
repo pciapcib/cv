@@ -2,9 +2,10 @@ var gulp = require('gulp'),
     minifyCSS = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps'),
-    rename = require('gulp-rename'),
     imagemin = require('gulp-imagemin'),
+    spritesmith = require('gulp.spritesmith'),
     cache = require('gulp-cache'),
+    rename = require('gulp-rename'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload;
 
@@ -38,6 +39,15 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('images'));
 });
 
+gulp.task('sprite', function() {
+    gulp.src('images/*.png')
+        .pipe(spritesmith({
+            imgName: 'test.png',
+            cssName: 'test.css'
+        }))
+        .pipe(gulp.dest('images'));
+});
+
 gulp.task('serve', function() {
     browserSync.init({
         server: {
@@ -47,7 +57,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('default', function() {
-    gulp.start('minifyCSS', 'minifyJS', 'imagemin', 'serve');
+    gulp.start('minifyCSS', 'minifyJS', 'serve');
 
     gulp.watch('*.html', reload);
     gulp.watch(['css/cv.css', 'css/reset.css'], ['minifyCSS', reload]);
