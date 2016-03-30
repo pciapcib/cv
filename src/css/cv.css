@@ -24,10 +24,6 @@
     font-family: 'iconfont' !important;
     font-size: 16px;
     font-style: normal;
-
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: .2px;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-star:before {
@@ -95,37 +91,21 @@ a:hover {
 }
 
 .page {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 
     height: 100%;
     padding: 10%;
 
-    -webkit-align-items: center;
-
-        -ms-flex-align: center;
-
-            align-items: center;
+    align-items: center;
 }
 
 .row,
 .col {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
 
-    -webkit-flex: 1;
-
-        -ms-flex: 1;
-
-            flex: 1;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex: 1;
+    align-items: center;
 }
 
 .row {
@@ -134,36 +114,20 @@ a:hover {
 }
 
 .col {
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 }
 
 .cell {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
 
-    -webkit-flex: 1;
-
-        -ms-flex: 1;
-
-            flex: 1;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
+    flex: 1;
+    align-items: center;
 }
 
 .col .cell {
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 
-    -webkit-justify-content: center;
-
-        -ms-flex-pack: center;
-
-            justify-content: center;
+    justify-content: center;
 }
 
 #avatar {
@@ -180,58 +144,28 @@ a:hover {
 }
 
 #page2 .icon {
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
 
-    -webkit-justify-content: center;
-
-        -ms-flex-pack: center;
-
-            justify-content: center;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    justify-content: center;
+    flex: 1;
 }
 
 #page2 .icon a {
     display: block;
 
-    width: 100px;
-    height: 100px;
     padding-bottom: 0;
 
     text-align: center;
 
     border-bottom: none;
     border-radius: 50%;
-    background: #dadada url(../images/sprite.png);
-}
-
-#page2 #repository {
-    background-position: -204px 0;
-}
-
-#page2 #sayu {
-    background-position: -306px 0;
-}
-
-#page2 #jzoom {
-    background-position: -102px 0;
-}
-
-#page2 #cclock {
-    background-position: 0 0;
+    background-color: #dadada;
 }
 
 #page2 .info {
     text-align: justify;
 
-    -webkit-flex: 2;
-
-        -ms-flex: 2;
-
-            flex: 2;
+    flex: 2;
 }
 
 #page2 .info p {
@@ -261,10 +195,10 @@ a:hover {
 }
 
 .github:hover {
-    border-color: #ccc;
-    background: linear-gradient(to bottom, #eee, #ddd);
     color: #333;
     border-width: 1px;
+    border-color: #ccc;
+    background: linear-gradient(to bottom, #eee, #ddd);
 }
 
 .github:active {
@@ -326,9 +260,7 @@ a:hover {
 }
 
 #page5 .cell {
-    -webkit-align-items: flex-start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    align-items: flex-start;
 }
 
 #page5 p {
@@ -410,9 +342,7 @@ a:hover {
     }
 
     #page2 .row {
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
 
         padding-right: 10%;
     }
@@ -422,8 +352,7 @@ a:hover {
     }
 
     .github {
-        -webkit-transform: scale(1.5,1.5);
-                transform: scale(1.5,1.5);
+        transform: scale(1.5,1.5);
     }
 
     #page3 .skill {
@@ -444,16 +373,13 @@ a:hover {
     }
 
     #page2 .row {
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
 
         padding-right: 6%;
     }
 
     .github {
-        -webkit-transform: scale(1.3,1.3);
-                transform: scale(1.3,1.3);
+        transform: scale(1.3,1.3);
     }
 
     #nav {
@@ -487,20 +413,20 @@ a:hover {
         height: 80px;
     }
 
-    #page2 #repository {
-        background-position: -214px -10px;
-    }
-
-    #page2 #sayu {
-        background-position: -316px -10px;
-    }
-
-    #page2 #jzoom {
-        background-position: -112px -10px;
-    }
-
-    #page2 #cclock {
+    .icon-cClock {
         background-position: -10px -10px;
+    }
+
+    .icon-jZoom {
+        background-position: -110px -10px;
+    }
+
+    .icon-repository {
+        background-position: -10px -110px;
+    }
+    .icon-sayu {
+
+        background-position: -110px -110px;
     }
 
     #page2 .info p {
@@ -508,8 +434,7 @@ a:hover {
     }
 
     .github {
-        -webkit-transform: scale(1.1,1.1);
-                transform: scale(1.1,1.1);
+        transform: scale(1.1,1.1);
     }
 
     #page3 p {
@@ -536,8 +461,7 @@ a:hover {
     }
 
     .github {
-        -webkit-transform: scale(.9,.9);
-                transform: scale(.9,.9);
+        transform: scale(.9,.9);
     }
 }
 
@@ -556,18 +480,10 @@ a:hover {
     }
 
     #page2 .info {
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
 
-        -webkit-align-items: center;
-
-            -ms-flex-align: center;
-
-                align-items: center;
+        align-items: center;
     }
 }
 
@@ -580,9 +496,7 @@ a:hover {
     }
 
     #page2 .row {
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        flex-direction: column;
 
         padding-right: 8%;
     }
@@ -592,8 +506,7 @@ a:hover {
     }
 
     .github {
-        -webkit-transform: scale(1,1);
-                transform: scale(1,1);
+        transform: scale(1,1);
     }
 }
 
