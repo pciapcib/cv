@@ -23,7 +23,7 @@ Shen Ting's Curriculum Vitae
 
 个人简历的在线版本，使用flex和响应式布局。
 
-* [白湯](#)
+* [白湯](http://219.83.163.204)
 
 推送随机文章的简约阅读网站，负责完成前端部分。
 
@@ -57,7 +57,7 @@ Shen Ting's Curriculum Vitae
 
 * E-mail: [pciapcib@163.com](mailto:pciapcib@163.com)
 
-* Blog: [shenting.me](shenting.me)
+* Blog: [shenting.me](http://shenting.me)
 
 * Github: [github.com/pciapcib](https://github.com/pciapcib)
 

@@ -357,8 +357,10 @@ a:hover {
 
     #page3 .skill {
         line-height: 30px;
+    }
 
-        height: 30px;
+    #page3 .banner {
+        margin: 0 -7px 4px;
     }
 }
 
@@ -425,7 +427,6 @@ a:hover {
         background-position: -10px -110px;
     }
     .icon-sayu {
-
         background-position: -110px -110px;
     }
 
@@ -518,7 +519,8 @@ a:hover {
 
     #page3 .skill {
         line-height: 32px;
-
-        height: 32px;
+    }
+    #page3 .banner {
+        margin: 0 -7px 5px;
     }
 }
