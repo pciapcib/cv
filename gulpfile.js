@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     cache = require('gulp-cache'),
     clean = require('gulp-clean'),
-    minify = require('gulp-minify-css'),
+    cleancss = require('gulp-clean-css'),
     reload = browserSync.reload,
     rename = require('gulp-rename'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -31,9 +31,7 @@ gulp.task('css', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(minify({
-            advanced: false
-        }))
+        .pipe(cleancss())
         .pipe(gulp.dest('dist/css'));
 });
 
@@ -57,10 +55,10 @@ gulp.task('sprite', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(minify({
-            advanced: false
-        }))
+        .pipe(cleancss())
         .pipe(gulp.dest('dist/images'));
+
+    return imgStream;
 });
 
 gulp.task('js', function() {
