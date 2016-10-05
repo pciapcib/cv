@@ -37,6 +37,9 @@ module.exports = {
       loader: 'babel',
       exclude: /node_modules/
     }, {
+      test: /\.css$/,
+      loader: 'style!css'
+    }, {
       test: /\.(png|jpg|gif|svg)$/,
       loader: 'url',
       query: {
@@ -47,7 +50,8 @@ module.exports = {
   },
 
   eslint: {
-    formatter: require('eslint-friendly-formatter')
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: true
   },
 
   plugins: [
