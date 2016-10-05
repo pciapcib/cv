@@ -2,16 +2,24 @@
   #app
     img(src="./assets/logo.png")
     h1 {{ msg }}
+
+    codes
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      msg: 'Hello Vue!'
+  import Codes from './components/Codes'
+
+  export default {
+    data () {
+      return {
+        msg: 'Hello Vue!'
+      }
+    },
+
+    components: {
+      Codes
     }
   }
-}
 </script>
 
 <style lang="sass">
