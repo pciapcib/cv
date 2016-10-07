@@ -1,17 +1,28 @@
 <template lang="pug">
   #app
-    img(src="./assets/logo.png")
     h1 {{ msg }}
 
-    codes
+    pre
+      codes(
+        :lang="'stylus'",
+        :codes="codes.template"
+      )
+
+    pre
+      codes(
+        :lang="'javascript'",
+        :codes="codes.script"
+      )
 </template>
 
 <script>
   import Codes from './components/Codes'
+  import codes from './assets/text/codes'
 
   export default {
     data () {
       return {
+        codes,
         msg: 'Hello Vue!'
       }
     },
@@ -25,4 +36,9 @@
 <style lang="sass">
   body
     font-family: Helvetica, sans-serif
+
+  .pre-high-light
+    code
+      color: #000
+      background-color: #fff
 </style>
