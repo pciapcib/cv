@@ -11,7 +11,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.vue']
+    extensions: ['', '.vue', '.js', '.json']
   },
 
   resolveLoader: {
@@ -36,6 +36,9 @@ module.exports = {
       test: /\.js$/,
       loader: 'babel',
       exclude: /node_modules/
+    }, {
+      test: /\.json$/,
+      loader: 'json'
     }, {
       test: /\.css$/,
       loader: 'style!css'
