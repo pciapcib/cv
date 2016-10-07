@@ -37,8 +37,7 @@
   body
     font-family: Helvetica, sans-serif
 
-  .pre-high-light
-    code
+  .pre-high-light code
       color: #000
       background-color: #fff
 </style>
