@@ -25,7 +25,7 @@ const tags = {
 fs.readFile(path.resolve(__dirname, '../../components/Codes.vue'), (err, data) => {
   if (err) throw err
 
-  const dataString = data.toString()
+  const dataString = data.toString().replace(/\n[ ]{2}/g, '\n')
 
   const textObj = {}
 
