@@ -1,0 +1,122 @@
+// template lang="pug"
+pre
+  code.hljs(
+    v-if="codeHtml",
+    v-html="codeHtml"
+  )
+  // await
+
+  code.hljs(v-if="isPrinting") {{ codeProgress }}
+  // await
+
+// code
+// script
+import hljs from 'highlight.js/lib/highlight'
+import 'highlight.js/styles/atom-one-dark.css'
+import promisify from 'assets/js/promisify'
+
+import codesText from 'assets/text/codes.txt'
+const codes = codesText.split(/\n *\/\/ code/).map(code => code.split(/ *\/\/ await\n/))
+
+void ['stylus', 'javascript', 'scss'].forEach(lang =>
+  hljs.registerLanguage(lang, require(`highlight.js/lib/languages/${lang}`)))
+// await
+
+export default {
+  data () {
+    return {
+      isPrinting: true,
+      codeCounter: 0,
+      blockCounter: 0,
+      charCounter: 0,
+      codes,
+      codeHtml: '',
+      codeProgress: '',
+      codeClass: ['hljs']
+    }
+  },
+// await
+
+  props: {
+    // wcodes: {
+      // type: String
+      // required: true
+    // },
+// await
+
+    callback: {
+      type: Function,
+      default () {}
+    }
+  },
+// await
+
+  computed: {
+    hlAnalysis () {
+      return hljs.highlightAuto(this.codeBlock)
+    }
+  },
+// await
+
+  methods: {
+    printCodes () {
+      return promisify(this.codes.length, this.printCode, 600, () => {
+
+      })
+    },
+// await
+
+    printCode (resolve) {
+      this.$el.scrollTop = this.$el.scrollHeight
+
+      return () => {
+        promisify(this.codes[this.codeCounter].length, this.printBlock, 500, () => {
+          this.codeCounter++
+          this.blockCounter = 0
+
+          resolve()
+        })
+      }
+    },
+// await
+
+    printBlock (resolve) {
+      const block = this.codes[this.codeCounter][this.blockCounter]
+
+      return () => {
+        promisify(block.length, this.printChar, 15, () => {
+          this.codeProgress = ''
+          this.codeHtml += hljs.highlightAuto(block).value
+
+          this.blockCounter++
+          this.charCounter = 0
+
+          resolve()
+        })
+      }
+    },
+// await
+
+    printChar (resolve) {
+      const char = this.codes[this.codeCounter][this.blockCounter][this.charCounter]
+
+      this.$el.scrollTop = this.$el.scrollHeight
+
+      return () => {
+        if (this.charCounter || char !== '\n') {
+          this.codeProgress += char
+        }
+
+        this.charCounter++
+
+        resolve()
+      }
+    }
+  },
+// await
+
+  mounted () {
+    this.printCodes()
+  }
+}
+// code

@@ -1,0 +1,99 @@
+<h2>Shen Ting</h2>
+<!-- await-->
+<h3>Web Developer</h3>
+<!-- await-->
+<h3>Skills</h3>
+<!-- await-->
+<ul>
+  <li>HTML
+    <ul>
+      <li>Pug</li>
+    </ul>
+  </li>
+  <!-- await-->
+  <li>CSS
+    <ul>
+      <li>Flexbox</li>
+      <li>Sass</li>
+      <li>Bootstrap</li>
+      <li>Amaze UI</li>
+      <li>WeUI</li>
+    </ul>
+  </li>
+  <!-- await-->
+  <li>Javascript
+    <ul>
+      <li>jQuery</li>
+      <li>ECMAScript 6</li>
+      <li>Vue</li>
+      <li>Node</li>
+    </ul>
+  </li>
+  <!-- await-->
+  <li>Utilities
+    <ul>
+      <li>Gulp</li>
+      <li>webpack</li>
+      <li>Babel</li>
+      <li>Mocha</li>
+      <li>Chai</li>
+    </ul>
+  </li>
+  <!-- await-->
+  <li>Tools
+    <ul>
+      <li>Git</li>
+      <li>npm</li>
+      <li>Photoshop</li>
+    </ul>
+  </li>
+  <!-- await-->
+</ul>
+<h3>Experience</h3>
+<!-- await-->
+<ul>
+  <li><a href="http://www.sfdai.com/" target="_blank">杭州商富信息科技有限公司</a> 2016.3 - 2016.8</li>
+</ul>
+<!-- await-->
+<h3>Projects</h3>
+<!-- await-->
+<ul>
+  <li><a href="https://github.com/pciapcib/node-zhihu-daily" target="_blank">node-zhihu-daily</a> 2016.9
+    <p>A Zhihu Daily CLI reader by Node.js</p>
+  </li>
+  <!-- await-->
+  <li><a href="https://github.com/pciapcib/node-dictionary" target="_blank">node-dictionary</a> 2016.9
+    <p>A tiny CLI tool for querying and translating by Node.js</p>
+  </li>
+  <!-- await-->
+  <li><a href="http://www.beejc.com" target="_blank">蜜蜂聚财</a> 2016.5 - 2016.8
+    <p>A P2P single page application for car loans by Vue.js</p>
+  </li>
+  <!-- await-->
+  <li><a href="https://github.com/pciapcib/cClock" target="_blank">cClock</a> 2016.3
+    <p>A flat and dynamic clock by Canvas</p>
+  </li>
+  <!-- await-->
+  <li><a href="https://github.com/pciapcib/jZoom" target="_blank">jZoom</a> 2016.3
+    <p>A tiny and easy-using jQuery plugin for zooming images</p>
+  </li>
+  <!-- await-->
+</ul>
+<h3>Education</h3>
+<!-- await-->
+<ul>
+  <li>Faculty of Science, Ningbo University</li>
+  <li>Bachelor's degree, Physics(Education)</li>
+  <li>2011.9 - 2015.6</li>
+</ul>
+<!-- await-->
+<h3>Contact</h3>
+<!-- await-->
+<ul>
+  <li>E-mail: <a href="mailto:pciapcib@163.com">pciapcib@163.com</a></li>
+  <!-- await-->
+  <li>Github: <a href="https://github.com/pciapcib" target="_blank">github.com/pciapcib</a></li>
+  <!-- await-->
+  <li>Blog: <a href="http://shenting.me" target="_blank">shenting.me</a></li>
+  <!-- await-->
+</ul>
