@@ -1,0 +1,146 @@
+<template lang="pug">
+  pre#resume
+    h2 Shen Ting
+    // await
+
+    h3 Web Developer
+    // await
+
+    h3 Skills
+    // await
+
+    ul
+      li HTML
+        ul
+          li Pug
+      // await
+
+      li CSS
+        ul
+          li Flexbox
+          li Sass
+          li Bootstrap
+          li Amaze UI
+          li WeUI
+      // await
+
+      li Javascript
+        ul
+          li jQuery
+          li ECMAScript 6
+          li Vue
+          li Node
+      // await
+
+      li Utilities
+        ul
+          li Gulp
+          li webpack
+          li Babel
+          li Mocha
+          li Chai
+      // await
+
+      li Tools
+        ul
+          li Git
+          li npm
+          li Photoshop
+      // await
+
+    h3 Experience
+    // await
+
+    ul
+      li
+        a(
+          href="http://www.sfdai.com/",
+          target="_blank"
+        ) 杭州商富信息科技有限公司
+        |  2016.3 - 2016.8
+    // await
+
+    h3 Projects
+    // await
+
+    ul
+      li
+        a(
+          href="https://github.com/pciapcib/node-zhihu-daily",
+          target="_blank"
+        ) node-zhihu-daily
+        |  2016.9
+        p A Zhihu Daily CLI reader by Node.js
+      // await
+
+      li
+        a(
+          href="https://github.com/pciapcib/node-dictionary",
+          target="_blank"
+        ) node-dictionary
+        |  2016.9
+        p A tiny CLI tool for querying and translating by Node.js
+      // await
+
+      li
+        a(
+          href="http://www.beejc.com",
+          target="_blank"
+        ) 蜜蜂聚财
+        |  2016.5 - 2016.8
+        p A P2P single page application for car loans by Vue.js
+      // await
+
+      li
+        a(
+          href="https://github.com/pciapcib/cClock",
+          target="_blank"
+        ) cClock
+        |  2016.3
+        p A flat and dynamic clock by Canvas
+      // await
+
+      li
+        a(
+          href="https://github.com/pciapcib/jZoom",
+          target="_blank"
+        ) jZoom
+        |  2016.3
+        p A tiny and easy-using jQuery plugin for zooming images
+      // await
+
+    h3 Education
+    // await
+
+    ul
+      li Faculty of Science, Ningbo University
+      li Bachelor's degree, Physics(Education)
+      li 2011.9 - 2015.6
+    // await
+
+    h3 Contact
+    // await
+
+    ul
+      li
+        | E-mail: 
+        a(href="mailto:pciapcib@163.com") pciapcib@163.com
+      // await
+
+      li
+        | Github: 
+        a(
+          href="https://github.com/pciapcib",
+          target="_blank"
+        ) github.com/pciapcib
+      // await
+
+      li
+        | Blog: 
+        a(
+          href="http://shenting.me",
+          target="_blank"
+        ) shenting.me
+      // await
+
+</template>
