@@ -11,7 +11,11 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.vue', '.js', '.json']
+    extensions: ['', '.vue', '.js', '.json'],
+    alias: {
+      'assets': path.resolve(__dirname, './src/assets'),
+      'components': path.resolve(__dirname, './src/components')
+    }
   },
 
   resolveLoader: {
@@ -49,6 +53,9 @@ module.exports = {
         limit: 10000,
         name: '[name].[hash:7].[ext]'
       }
+    }, {
+      test: /\.txt$/,
+      loader: 'raw'
     }]
   },
 
