@@ -1,79 +1,144 @@
 <template lang="pug">
-  div
+  // template lang="pug"
+  pre
     code.hljs(
-      v-show="isPrinting"
-    ) {{ codeProgress }}
-
-    code(
-      v-show="!isPrinting",
-      v-html="codeHtml",
-      :class="codeClass"
+      v-if="codeHtml",
+      v-html="codeHtml"
     )
+    // await
+
+    code.hljs(v-if="isPrinting") {{ codeProgress }}
+    // await
+
 </template>
 
 <script>
+  // script
   import hljs from 'highlight.js/lib/highlight'
+
+  import stylus from 'highlight.js/lib/languages/stylus'
+  import javascript from 'highlight.js/lib/languages/javascript'
+  import scss from 'highlight.js/lib/languages/scss'
+  // await
+
   import 'highlight.js/styles/atom-one-dark.css'
+  // await
+
+  import promisify from 'assets/js/promisify'
+
+  import codesText from 'assets/text/codes.txt'
+  // await
+
+  const langs = {
+    stylus,
+    javascript,
+    scss
+  }
+
+  Object.keys(langs).forEach(lang =>
+    hljs.registerLanguage(lang, langs[lang]))
+  // await
+
+  const codes = codesText.split(/\n *\/\/ code/).map(code =>
+    code.split(/ *\/\/ await\n/))
+  // await
 
   export default {
     data () {
       return {
         isPrinting: true,
-        counter: 0,
-        codeProgress: '',
+        codeCounter: 0,
+        blockCounter: 0,
+        charCounter: 0,
+        codes,
         codeHtml: '',
+        codeProgress: '',
         codeClass: ['hljs']
       }
     },
+  // await
 
     props: {
-      lang: {
-        type: String,
-        default: ''
-      },
+      // wcodes: {
+        // type: String
+        // required: true
+      // },
+  // await
 
-      codes: {
-        type: String,
-        required: true
+      callback: {
+        type: Function,
+        default () {}
       }
     },
+  // await
 
     computed: {
-      codeBlock () {
-        return `${this.codes} `
-      },
-
       hlAnalysis () {
         return hljs.highlightAuto(this.codeBlock)
       }
     },
+  // await
 
     methods: {
       printCodes () {
-        return new Array(this.codeBlock.length)
-          .fill(() => new Promise(resolve => setTimeout(this.printChar(resolve), 10)))
-          .reduce((cur, next) => cur.then(next), Promise.resolve())
-          .then(() => {
-            const { value, language } = this.hlAnalysis
+        return promisify(this.codes.length, this.printCode, 600, () => {
 
-            this.isPrinting = false
-            this.codeHtml = value
-            this.codeClass.push(this.lang, language)
-          })
+        })
       },
+  // await
+
+      printCode (resolve) {
+        const code = this.codes[this.codeCounter]
+
+        this.$el.scrollTop = this.$el.scrollHeight
+
+        return () => {
+          promisify(code.length, this.printBlock, 500, () => {
+            this.codeCounter++
+            this.blockCounter = 0
+
+            resolve()
+          })
+        }
+      },
+  // await
+
+      printBlock (resolve) {
+        const block = this.codes[this.codeCounter][this.blockCounter]
+
+        return () => {
+          promisify(block.length, this.printChar, 15, () => {
+            this.codeProgress = ''
+            this.codeHtml += hljs.highlightAuto(block).value
+
+            this.blockCounter++
+            this.charCounter = 0
+
+            resolve()
+          })
+        }
+      },
+  // await
 
       printChar (resolve) {
+        const char = this.codes[this.codeCounter][this.blockCounter][this.charCounter]
+
+        this.$el.scrollTop = this.$el.scrollHeight
+
         return () => {
-          this.codeProgress += this.codeBlock[this.counter++]
+          if (this.charCounter || char !== '\n') {
+            this.codeProgress += char
+          }
+
+          this.charCounter++
 
           resolve()
         }
       }
     },
+  // await
 
     mounted () {
-      hljs.registerLanguage(this.lang, require(`highlight.js/lib/languages/${this.lang}`))
-
       this.printCodes()
     }
   }
