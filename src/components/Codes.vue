@@ -1,5 +1,5 @@
 <template lang="pug">
-  // template lang="pug"
+  //- template lang="pug"
   pre
     code.hljs(
       v-if="codeHtml",
@@ -25,8 +25,6 @@
   // await
 
   import promisify from 'assets/js/promisify'
-
-  import codesText from 'assets/text/codes.txt'
   // await
 
   const langs = {
@@ -35,12 +33,9 @@
     scss
   }
 
-  Object.keys(langs).forEach(lang =>
-    hljs.registerLanguage(lang, langs[lang]))
-  // await
-
-  const codes = codesText.split(/\n *\/\/ code/).map(code =>
-    code.split(/ *\/\/ await\n/))
+  Object
+    .keys(langs)
+    .forEach(lang => hljs.registerLanguage(lang, langs[lang]))
   // await
 
   export default {
@@ -50,19 +45,17 @@
         codeCounter: 0,
         blockCounter: 0,
         charCounter: 0,
-        codes,
         codeHtml: '',
-        codeProgress: '',
-        codeClass: ['hljs']
+        codeProgress: ''
       }
     },
   // await
 
     props: {
-      // wcodes: {
-        // type: String
-        // required: true
-      // },
+      codesText: {
+        type: String,
+        required: true
+      },
   // await
 
       callback: {
@@ -73,8 +66,22 @@
   // await
 
     computed: {
-      hlAnalysis () {
-        return hljs.highlightAuto(this.codeBlock)
+      codes () {
+        return this.codesText
+          .split(/\n *\/\/ code/)
+          .map(code => code.split(/ *\/\/ await\n/g))
+      },
+
+      curCode () {
+        return this.codes[this.codeCounter]
+      },
+
+      curBlock () {
+        return this.curCode[this.blockCounter]
+      },
+
+      curChar () {
+        return this.curBlock[this.charCounter]
       }
     },
   // await
@@ -88,12 +95,8 @@
   // await
 
       printCode (resolve) {
-        const code = this.codes[this.codeCounter]
-
-        this.$el.scrollTop = this.$el.scrollHeight
-
         return () => {
-          promisify(code.length, this.printBlock, 500, () => {
+          promisify(this.curCode.length, this.printBlock, 500, () => {
             this.codeCounter++
             this.blockCounter = 0
 
@@ -104,12 +107,12 @@
   // await
 
       printBlock (resolve) {
-        const block = this.codes[this.codeCounter][this.blockCounter]
+        this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          promisify(block.length, this.printChar, 15, () => {
+          promisify(this.curBlock.length, this.printChar, 15, () => {
             this.codeProgress = ''
-            this.codeHtml += hljs.highlightAuto(block).value
+            this.codeHtml += hljs.highlightAuto(this.curBlock).value
 
             this.blockCounter++
             this.charCounter = 0
@@ -121,13 +124,11 @@
   // await
 
       printChar (resolve) {
-        const char = this.codes[this.codeCounter][this.blockCounter][this.charCounter]
-
         this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          if (this.charCounter || char !== '\n') {
-            this.codeProgress += char
+          if (this.charCounter || this.curChar !== '\n') {
+            this.codeProgress += this.curChar
           }
 
           this.charCounter++

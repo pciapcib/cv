@@ -1,43 +1,77 @@
 <template lang="pug">
+  //- template lang="pug"
   #app
-    h1 {{ msg }}
+    resume
+    // await
 
-    pre
-      codes(
-        :lang="'stylus'",
-        :codes="codes.template"
-      )
+    codes(
+      :codes-text="appText"
+    )
+    // await
 
-    pre
-      codes(
-        :lang="'javascript'",
-        :codes="codes.script"
-      )
+    codes(
+      :codes-text="codesText"
+    )
+    // await
+
 </template>
 
 <script>
-  import Codes from './components/Codes'
-  import codes from './assets/text/codes'
+  // script
+  import Resume from 'components/Resume'
+  import Codes from 'components/Codes'
+
+  import appText from 'assets/text/app.txt'
+  import codesText from 'assets/text/codes.txt'
+  // await
 
   export default {
     data () {
       return {
-        codes,
-        msg: 'Hello Vue!'
+        appText,
+        codesText,
+        isTemplateDone: false
       }
     },
+  // await
+
+    methods: {
+
+    },
+  // await
 
     components: {
+      Resume,
       Codes
     }
   }
+  // await
+
 </script>
 
 <style lang="sass">
+  // style lang="sass"
   body
     font-family: Helvetica, sans-serif
 
-  .pre-high-light code
+  *
+    transition: all .4s ease-out
+  // await
+
+  #app
+    display: flex
+
+    > pre
+      flex: 1
+      max-height: 450px
+      overflow-y: auto
+      white-space: pre-wrap
+      word-wrap: break-word
+  // await
+
+  .pre-high-light
+    code
       color: #000
       background-color: #fff
+  // await
 </style>

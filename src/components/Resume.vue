@@ -5,7 +5,7 @@
       v-html="codeHtml"
     )
 
-    code(v-if="isPrinting") {{ codeProgress }}
+    code {{ codeProgress }}
 </template>
 
 <script>
@@ -27,10 +27,20 @@
       }
     },
 
+    computed: {
+      curBlock () {
+        return this.pug[this.blockCounter]
+      },
+
+      curChar () {
+        return this.curBlock[this.charCounter]
+      }
+    },
+
     methods: {
       printResume () {
         return promisify(this.pug.length, this.printBlock, 600, () => {
-
+          this.isPrinting = false
         })
       },
 
@@ -38,7 +48,7 @@
         this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          promisify(this.pug[this.blockCounter].length, this.printChar, 15, () => {
+          promisify(this.curBlock.length, this.printChar, 15, () => {
             this.codeProgress = ''
             this.codeHtml += this.xml[this.blockCounter++]
 
@@ -53,7 +63,8 @@
         this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          this.codeProgress += this.pug[this.blockCounter][this.charCounter++]
+          this.codeProgress += this.curChar
+          this.charCounter++
 
           resolve()
         }
