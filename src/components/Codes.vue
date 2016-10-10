@@ -1,13 +1,13 @@
 <template lang="pug">
   //- template lang="pug"
   pre
-    code.hljs(
+    code(
       v-if="codeHtml",
       v-html="codeHtml"
     )
     // await
 
-    code.hljs(v-if="isPrinting") {{ codeProgress }}
+    code(v-if="isPrinting") {{ codeProgress }}
     // await
 
 </template>
@@ -19,9 +19,6 @@
   import stylus from 'highlight.js/lib/languages/stylus'
   import javascript from 'highlight.js/lib/languages/javascript'
   import scss from 'highlight.js/lib/languages/scss'
-  // await
-
-  import 'highlight.js/styles/atom-one-dark.css'
   // await
 
   import promisify from 'assets/js/promisify'
@@ -68,46 +65,29 @@
     computed: {
       codes () {
         return this.codesText
-          .split(/\n *\/\/ code/)
-          .map(code => code.split(/ *\/\/ await\n/g))
-      },
-
-      curCode () {
-        return this.codes[this.codeCounter]
+          .split(/ *\/\/ await\n/g)
       },
 
       curBlock () {
-        return this.curCode[this.blockCounter]
-      },
-
-      curChar () {
-        return this.curBlock[this.charCounter]
+        return this.codes[this.blockCounter]
       }
     },
   // await
 
     methods: {
       printCodes () {
-        return promisify(this.codes.length, this.printCode, 600, () => {
+        return promisify(this.codes.length, this.printBlock, 400, () => {
 
         })
       },
   // await
 
-      printCode (resolve) {
-        return () => {
-          promisify(this.curCode.length, this.printBlock, 500, () => {
-            this.codeCounter++
-            this.blockCounter = 0
-
-            resolve()
-          })
-        }
-      },
-  // await
-
       printBlock (resolve) {
         this.$el.scrollTop = this.$el.scrollHeight
+
+        if (this.curBlock === undefined) {
+          return
+        }
 
         return () => {
           promisify(this.curBlock.length, this.printChar, 15, () => {
@@ -115,6 +95,13 @@
             this.codeHtml += hljs.highlightAuto(this.curBlock).value
 
             this.blockCounter++
+
+            if (this.curBlock && this.curBlock.includes('++vue')) {
+              this.$emit('add-vue')
+
+              this.blockCounter++
+            }
+
             this.charCounter = 0
 
             resolve()
@@ -124,12 +111,12 @@
   // await
 
       printChar (resolve) {
+        const curChar = this.curBlock[this.charCounter]
+
         this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          if (this.charCounter || this.curChar !== '\n') {
-            this.codeProgress += this.curChar
-          }
+          this.codeProgress += curChar
 
           this.charCounter++
 

@@ -9,10 +9,16 @@
     h3 Skills
     // await
 
+    //- ++css
+    // await
+
     ul
       li HTML
         ul
           li Pug
+      // await
+
+      //- ++css
       // await
 
       li CSS
@@ -71,6 +77,9 @@
         ) node-zhihu-daily
         |  2016.9
         p A Zhihu Daily CLI reader by Node.js
+      // await
+
+      //- ++css
       // await
 
       li
@@ -141,6 +150,4 @@
           href="http://shenting.me",
           target="_blank"
         ) shenting.me
-      // await
-
 </template>

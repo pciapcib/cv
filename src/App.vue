@@ -1,17 +1,23 @@
 <template lang="pug">
   //- template lang="pug"
   #app
-    resume
+    resume(
+      v-if="loadVue",
+      :class="codeClass",
+      @add-css="addCSS"
+    )
     // await
 
     codes(
+      :class="codeClass",
       :codes-text="appText"
+      @add-vue="addVue"
     )
     // await
 
-    codes(
-      :codes-text="codesText"
-    )
+    //- codes(
+      //- :codes-text="codesText"
+    //- )
     // await
 
 </template>
@@ -20,6 +26,10 @@
   // script
   import Resume from 'components/Resume'
   import Codes from 'components/Codes'
+  // await
+
+  // ++vue
+  // await
 
   import appText from 'assets/text/app.txt'
   import codesText from 'assets/text/codes.txt'
@@ -30,15 +40,32 @@
       return {
         appText,
         codesText,
+        codeClass: [],
+        classCounter: 0,
+        loadVue: false,
         isTemplateDone: false
       }
     },
   // await
 
     methods: {
+      addCSS () {
+        this.codeClass.push(`css-${this.classCounter++}`)
 
+        if (this.classCounter === 2) {
+          require('highlight.js/styles/atom-one-dark.css')
+        }
+      },
+
+      addVue () {
+        this.loadVue = true
+      }
     },
   // await
+
+    mounted () {
+
+    },
 
     components: {
       Resume,
@@ -67,11 +94,21 @@
       overflow-y: auto
       white-space: pre-wrap
       word-wrap: break-word
+
+      a
+        color: #f00
+        text-decoration: none
+
+      &.css-0
+        padding: 1em
+        color: #abb2bf
+
+      &.css-1
+        background: #282c34
+
+      &.css-2
+
   // await
 
-  .pre-high-light
-    code
-      color: #000
-      background-color: #fff
-  // await
+
 </style>

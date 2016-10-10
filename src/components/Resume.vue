@@ -30,16 +30,12 @@
     computed: {
       curBlock () {
         return this.pug[this.blockCounter]
-      },
-
-      curChar () {
-        return this.curBlock[this.charCounter]
       }
     },
 
     methods: {
       printResume () {
-        return promisify(this.pug.length, this.printBlock, 600, () => {
+        return promisify(this.pug.length, this.printBlock, 400, () => {
           this.isPrinting = false
         })
       },
@@ -47,10 +43,21 @@
       printBlock (resolve) {
         this.$el.scrollTop = this.$el.scrollHeight
 
+        if (this.curBlock === undefined) {
+          return
+        }
+
         return () => {
-          promisify(this.curBlock.length, this.printChar, 15, () => {
+          promisify(this.curBlock.length, this.printChar, 10, () => {
             this.codeProgress = ''
+
             this.codeHtml += this.xml[this.blockCounter++]
+
+            if (this.curBlock && this.curBlock.includes('++css')) {
+              this.$emit('add-css')
+
+              this.blockCounter++
+            }
 
             this.charCounter = 0
 
@@ -60,10 +67,12 @@
       },
 
       printChar (resolve) {
+        const curChar = this.pug[this.blockCounter][this.charCounter]
+
         this.$el.scrollTop = this.$el.scrollHeight
 
         return () => {
-          this.codeProgress += this.curChar
+          this.codeProgress += curChar
           this.charCounter++
 
           resolve()
@@ -76,10 +85,3 @@
     }
   }
 </script>
-
-<style lang="sass">
-  #resume
-    a
-      color: #f00
-      text-decoration: none
-</style>
