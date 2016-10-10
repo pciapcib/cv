@@ -11,8 +11,9 @@
   "main": "./src/main.js",
   "author": "Kamisama <pciapcib@163.com>",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "fetch": "node src/assets/js/fetch.js",
+    "dev": "npm run fetch && webpack-dev-server --inline --hot",
+    "build": "npm run fetch && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "repository": {
     "type": "git",
