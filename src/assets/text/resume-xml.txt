@@ -4,12 +4,14 @@
 <!-- await-->
 <h3>Skills</h3>
 <!-- await-->
+<!-- await-->
 <ul>
   <li>HTML
     <ul>
       <li>Pug</li>
     </ul>
   </li>
+  <!-- await-->
   <!-- await-->
   <li>CSS
     <ul>
@@ -62,6 +64,7 @@
     <p>A Zhihu Daily CLI reader by Node.js</p>
   </li>
   <!-- await-->
+  <!-- await-->
   <li><a href="https://github.com/pciapcib/node-dictionary" target="_blank">node-dictionary</a> 2016.9
     <p>A tiny CLI tool for querying and translating by Node.js</p>
   </li>
@@ -95,5 +98,4 @@
   <li>Github: <a href="https://github.com/pciapcib" target="_blank">github.com/pciapcib</a></li>
   <!-- await-->
   <li>Blog: <a href="http://shenting.me" target="_blank">shenting.me</a></li>
-  <!-- await-->
 </ul>
