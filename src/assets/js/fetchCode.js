@@ -22,7 +22,7 @@ function fetchCodes (componentName) {
 
     const textOut = codesReg.map(reg => match(dataString, reg))
 
-    fs.writeFileSync(path.resolve(__dirname, `../text/${componentName.toLowerCase()}.txt`), textOut.join('// code\n'))
+    fs.writeFileSync(path.resolve(__dirname, `../text/${componentName.toLowerCase()}.txt`), textOut.join(''))
   })
 }
 
