@@ -1,0 +1,75 @@
+//- template lang="pug"
+#app
+  resume
+  // await
+
+  codes(
+    :codes-text="appText",
+    :callback="qwe"
+  )
+  // await
+
+  codes(
+    :codes-text="codesText",
+    :callback="qwe"
+  )
+  // await
+
+// code
+// script
+import Resume from 'components/Resume'
+import Codes from 'components/Codes'
+
+import appText from 'assets/text/app.txt'
+import codesText from 'assets/text/codes.txt'
+// await
+
+export default {
+  data () {
+    return {
+      appText,
+      codesText,
+      isTemplateDone: false
+    }
+  },
+// await
+
+  methods: {
+    qwe () {
+      // this.isTemplateDone = true
+    }
+  },
+// await
+
+  components: {
+    Resume,
+    Codes
+  }
+}
+// await
+
+// code
+// style lang="sass"
+body
+  font-family: Helvetica, sans-serif
+
+*
+  transition: all .4s ease-out
+// await
+
+#app
+  display: flex
+
+  > pre
+    flex: 1
+    max-height: 450px
+    overflow-y: auto
+    white-space: pre-wrap
+    word-wrap: break-word
+// await
+
+.pre-high-light
+  code
+    color: #000
+    background-color: #fff
+// await
