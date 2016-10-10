@@ -7,19 +7,27 @@ const codesReg = [
   /<style lang="sass">\n([\s\S]*?)<\/style>/
 ]
 
-fs.readFile(path.resolve(__dirname, '../../components/Codes.vue'), (err, data) => {
-  if (err) throw err
+module.exports = () => {
+  fetchCodes('App')
+  fetchCodes('Codes')
+}
 
-  const dataString = data.toString().replace(/\n {2}/g, '\n')
+function fetchCodes (componentName) {
+  const componentPath = componentName === 'App' ? `../../App.vue` : `../../components/${componentName}.vue`
 
-  const textOut = codesReg.map(reg => match(reg))
+  fs.readFile(path.resolve(__dirname, componentPath), (err, data) => {
+    if (err) throw err
 
-  fs.writeFileSync(path.resolve(__dirname, '../text/codes.txt'), textOut.join('// code\n'))
+    const dataString = data.toString().replace(/\n {2}/g, '\n')
 
-  function match (reg) {
-    const matched = dataString.match(reg)
+    const textOut = codesReg.map(reg => match(dataString, reg))
 
-    return matched ? matched[1] : ''
-  }
-})
+    fs.writeFileSync(path.resolve(__dirname, `../text/${componentName.toLowerCase()}.txt`), textOut.join('// code\n'))
+  })
+}
 
+function match (data, reg) {
+  const matched = data.match(reg)
+
+  return matched ? matched[1] : ''
+}

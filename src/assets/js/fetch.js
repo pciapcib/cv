@@ -1,0 +1,2 @@
+require('./fetchCode')()
+require('./fetchResume')()
