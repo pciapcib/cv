@@ -1,23 +1,28 @@
 //- template lang="pug"
-#app
-  resume(
-    v-if="loadVue",
-    :class="codeClass",
-    @add-css="addCSS"
-  )
-  // await
+ul#app
+  li#resume
+    resume(
+      v-if="loadVue",
+      :class="codeClass",
+      @add-css="addCSS"
+    )
+    // await
 
-  codes(
-    :class="codeClass",
-    :codes-text="appText"
-    @add-vue="addVue"
-  )
-  // await
+  li#app-vue
+    codes(
+      :class="codeClass",
+      :codes-text="appText"
+      @add-vue="addVue"
+    )
+    // await
 
-  //- codes(
-    //- :codes-text="codesText"
-  //- )
-  // await
+  li#codes-vue
+    codes(
+      v-if="loadVue",
+      :class="codeClass",
+      :codes-text="codesText"
+    )
+    // await
 
 // script
 import Resume from 'components/Resume'
@@ -81,26 +86,34 @@ body
 #app
   display: flex
 
-  > pre
+  > li
     flex: 1
-    max-height: 450px
-    overflow-y: auto
-    white-space: pre-wrap
-    word-wrap: break-word
+    list-style: none
 
-    a
-      color: #f00
-      text-decoration: none
+    &#resume
+      flex: 2
 
-    &.css-0
-      padding: 1em
-      color: #abb2bf
+    &#app-vue
+      margin: 0 20px
 
-    &.css-1
-      background: #282c34
+    > pre
+      overflow-y: auto
+      max-height: 450px
+      white-space: pre-wrap
+      word-wrap: break-word
 
-    &.css-2
+      a
+        color: #f00
+        text-decoration: none
 
+      &.css-0
+        padding: 1em
+        color: #abb2bf
+        border: 4px solid #000
+
+      &.css-1
+        background: #282c34
+
+      &.css-2
 // await
-
 
