@@ -1,13 +1,10 @@
 <template lang="pug">
   //- template lang="pug"
   pre
-    code(
-      v-if="codeHtml",
-      v-html="codeHtml"
-    )
+    code(v-html="codeHtml")
     // await
 
-    code(v-if="isPrinting") {{ codeProgress }}
+    code {{ codeProgress }}
     // await
 
 </template>
@@ -18,28 +15,26 @@
 
   import stylus from 'highlight.js/lib/languages/stylus'
   import javascript from 'highlight.js/lib/languages/javascript'
-  import scss from 'highlight.js/lib/languages/scss'
   // await
 
   import promisify from 'assets/js/promisify'
+  import scrollToBottom from 'assets/js/scrollToBottom'
   // await
 
   const langs = {
     stylus,
-    javascript,
-    scss
+    javascript
   }
 
   Object
     .keys(langs)
-    .forEach(lang => hljs.registerLanguage(lang, langs[lang]))
+    .forEach(lang =>
+      hljs.registerLanguage(lang, langs[lang]))
   // await
 
   export default {
     data () {
       return {
-        isPrinting: true,
-        codeCounter: 0,
         blockCounter: 0,
         charCounter: 0,
         codeHtml: '',
@@ -76,32 +71,33 @@
 
     methods: {
       printCodes () {
-        return promisify(this.codes.length, this.printBlock, 400, () => {
+        promisify({
+          promiseNumber: this.codes.length,
+          step: this.printBlock,
+          interval: 300
+        }, () => {
 
         })
       },
   // await
 
       printBlock (resolve) {
-        this.$el.scrollTop = this.$el.scrollHeight
+        scrollToBottom(this)
 
         if (this.curBlock === undefined) {
           return
         }
 
         return () => {
-          promisify(this.curBlock.length, this.printChar, 15, () => {
+          promisify({
+            promiseNumber: this.curBlock.length,
+            step: this.printChar,
+            interval: 8
+          }, () => {
             this.codeProgress = ''
             this.codeHtml += hljs.highlightAuto(this.curBlock).value
 
             this.blockCounter++
-
-            if (this.curBlock && this.curBlock.includes('++vue')) {
-              this.$emit('add-vue')
-
-              this.blockCounter++
-            }
-
             this.charCounter = 0
 
             resolve()
@@ -113,11 +109,10 @@
       printChar (resolve) {
         const curChar = this.curBlock[this.charCounter]
 
-        this.$el.scrollTop = this.$el.scrollHeight
+        scrollToBottom(this)
 
         return () => {
           this.codeProgress += curChar
-
           this.charCounter++
 
           resolve()

@@ -6,10 +6,20 @@
     h3 Web Developer
     // await
 
-    h3 Skills
+    //- ++app
     // await
 
-    //- ++css
+    // await
+
+    // await
+
+    // await
+
+    // await
+
+    // await
+
+    h3 Skills
     // await
 
     ul
@@ -30,12 +40,18 @@
           li WeUI
       // await
 
+      //- ++css
+      // await
+
       li Javascript
         ul
           li jQuery
           li ECMAScript 6
           li Vue
           li Node
+      // await
+
+      //- ++codes
       // await
 
       li Utilities

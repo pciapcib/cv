@@ -1,15 +1,13 @@
 <template lang="pug">
   pre
-    code(
-      v-if="codeHtml",
-      v-html="codeHtml"
-    )
+    code(v-html="codeHtml")
 
     code {{ codeProgress }}
 </template>
 
 <script>
   import promisify from 'assets/js/promisify'
+  import scrollToBottom from 'assets/js/scrollToBottom'
 
   import pug from 'assets/text/resume-pug.txt'
   import xml from 'assets/text/resume-xml.txt'
@@ -19,7 +17,6 @@
       return {
         pug: pug.split(/ *\/\/ await\n{2}/),
         xml: xml.replace(/(\n| {2})/g, '').split('<!-- await-->'),
-        isPrinting: true,
         blockCounter: 0,
         charCounter: 0,
         codeHtml: '',
@@ -35,29 +32,32 @@
 
     methods: {
       printResume () {
-        return promisify(this.pug.length, this.printBlock, 400, () => {
-          this.isPrinting = false
+        promisify({
+          promiseNumber: this.pug.length,
+          step: this.printBlock,
+          interval: 250
+        }, () => {
+
         })
       },
 
       printBlock (resolve) {
-        this.$el.scrollTop = this.$el.scrollHeight
+        scrollToBottom(this)
 
         if (this.curBlock === undefined) {
           return
         }
 
         return () => {
-          promisify(this.curBlock.length, this.printChar, 10, () => {
+          promisify({
+            promiseNumber: this.curBlock.length,
+            step: this.printChar,
+            interval: 3
+          }, () => {
             this.codeProgress = ''
-
             this.codeHtml += this.xml[this.blockCounter++]
 
-            if (this.curBlock && this.curBlock.includes('++css')) {
-              this.$emit('add-css')
-
-              this.blockCounter++
-            }
+            this.emitAdd(['app', 'css', 'codes'])
 
             this.charCounter = 0
 
@@ -67,15 +67,29 @@
       },
 
       printChar (resolve) {
-        const curChar = this.pug[this.blockCounter][this.charCounter]
+        const curChar = this.curBlock[this.charCounter]
 
-        this.$el.scrollTop = this.$el.scrollHeight
+        scrollToBottom(this)
 
         return () => {
           this.codeProgress += curChar
           this.charCounter++
 
           resolve()
+        }
+      },
+
+      emitAdd (events) {
+        const { curBlock } = this
+
+        if (curBlock) {
+          events.forEach(event => {
+            if (curBlock.includes(`++${event}`)) {
+              this.$emit(`add-${event}`)
+
+              this.blockCounter++
+            }
+          })
         }
       }
     },
