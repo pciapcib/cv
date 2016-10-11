@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: ['babel-polyfill', './src/main.js'],
 
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.vue', '.js', '.json'],
+    extensions: ['', '.vue', '.js'],
     alias: {
       'assets': path.resolve(__dirname, './src/assets'),
       'components': path.resolve(__dirname, './src/components')
@@ -41,18 +41,8 @@ module.exports = {
       loader: 'babel',
       exclude: /node_modules/
     }, {
-      test: /\.json$/,
-      loader: 'json'
-    }, {
       test: /\.css$/,
       loader: 'style!css'
-    }, {
-      test: /\.(png|jpg|gif|svg)$/,
-      loader: 'url',
-      query: {
-        limit: 10000,
-        name: '[name].[hash:7].[ext]'
-      }
     }, {
       test: /\.txt$/,
       loader: 'raw'
@@ -60,7 +50,6 @@ module.exports = {
   },
 
   eslint: {
-    formatter: require('eslint-friendly-formatter'),
     emitWarning: true
   },
 
@@ -87,7 +76,6 @@ module.exports = {
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
 
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -97,6 +85,14 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js',
+      minChunks: ({ resource }) => {
+        return resource &&
+          resource.includes(path.join(__dirname, './node_modules'))
       }
     })
   ])
