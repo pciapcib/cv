@@ -2,8 +2,13 @@
 <!-- await-->
 <h3>Web Developer</h3>
 <!-- await-->
-<h3>Skills</h3>
 <!-- await-->
+<!-- await-->
+<!-- await-->
+<!-- await-->
+<!-- await-->
+<!-- await-->
+<h3>Skills</h3>
 <!-- await-->
 <ul>
   <li>HTML
@@ -23,6 +28,7 @@
     </ul>
   </li>
   <!-- await-->
+  <!-- await-->
   <li>Javascript
     <ul>
       <li>jQuery</li>
@@ -31,6 +37,7 @@
       <li>Node</li>
     </ul>
   </li>
+  <!-- await-->
   <!-- await-->
   <li>Utilities
     <ul>
