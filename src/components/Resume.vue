@@ -1,5 +1,5 @@
 <template lang="pug">
-  pre#resume
+  pre
     code(
       v-if="codeHtml",
       v-html="codeHtml"
