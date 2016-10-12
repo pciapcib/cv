@@ -2,12 +2,6 @@
 <!-- await-->
 <h3>Web Developer</h3>
 <!-- await-->
-<!-- await-->
-<!-- await-->
-<!-- await-->
-<!-- await-->
-<!-- await-->
-<!-- await-->
 <h3>Skills</h3>
 <!-- await-->
 <ul>
@@ -16,7 +10,6 @@
       <li>Pug</li>
     </ul>
   </li>
-  <!-- await-->
   <!-- await-->
   <li>CSS
     <ul>
@@ -28,7 +21,6 @@
     </ul>
   </li>
   <!-- await-->
-  <!-- await-->
   <li>Javascript
     <ul>
       <li>jQuery</li>
@@ -37,6 +29,14 @@
       <li>Node</li>
     </ul>
   </li>
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
+  <!-- await-->
   <!-- await-->
   <!-- await-->
   <li>Utilities
@@ -49,6 +49,7 @@
     </ul>
   </li>
   <!-- await-->
+  <!-- await-->
   <li>Tools
     <ul>
       <li>Git</li>
@@ -56,9 +57,10 @@
       <li>Photoshop</li>
     </ul>
   </li>
-  <!-- await-->
 </ul>
+<!-- await-->
 <h3>Experience</h3>
+<!-- await-->
 <!-- await-->
 <ul>
   <li><a href="http://www.sfdai.com/" target="_blank">杭州商富信息科技有限公司</a> 2016.3 - 2016.8</li>
@@ -70,7 +72,6 @@
   <li><a href="https://github.com/pciapcib/node-zhihu-daily" target="_blank">node-zhihu-daily</a> 2016.9
     <p>A Zhihu Daily CLI reader by Node.js</p>
   </li>
-  <!-- await-->
   <!-- await-->
   <li><a href="https://github.com/pciapcib/node-dictionary" target="_blank">node-dictionary</a> 2016.9
     <p>A tiny CLI tool for querying and translating by Node.js</p>

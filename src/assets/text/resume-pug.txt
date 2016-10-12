@@ -4,19 +4,6 @@ h2 Shen Ting
 h3 Web Developer
 // await
 
-//- ++app
-// await
-
-// await
-
-// await
-
-// await
-
-// await
-
-// await
-
 h3 Skills
 // await
 
@@ -24,9 +11,6 @@ ul
   li HTML
     ul
       li Pug
-  // await
-
-  //- ++css
   // await
 
   li CSS
@@ -38,9 +22,6 @@ ul
       li WeUI
   // await
 
-  //- ++css
-  // await
-
   li Javascript
     ul
       li jQuery
@@ -49,7 +30,24 @@ ul
       li Node
   // await
 
-  //- ++codes
+  //- ++app
+  // await
+
+  // await
+
+  // await
+
+  // await
+
+  // await
+
+  // await
+
+  // await
+
+  // await
+
+  //- ++css
   // await
 
   li Utilities
@@ -61,14 +59,20 @@ ul
       li Chai
   // await
 
+  //- ++css
+  // await
+
   li Tools
     ul
       li Git
       li npm
       li Photoshop
-  // await
+// await
 
 h3 Experience
+// await
+
+//- ++codes
 // await
 
 ul
@@ -91,9 +95,6 @@ ul
     ) node-zhihu-daily
     |  2016.9
     p A Zhihu Daily CLI reader by Node.js
-  // await
-
-  //- ++css
   // await
 
   li
