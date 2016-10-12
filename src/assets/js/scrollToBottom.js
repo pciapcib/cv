@@ -1,3 +1,3 @@
-export default ({ $el }) => {
-  $el.scrollTop = $el.scrollHeight
+export default ({ $el: { lastChild: pre } }) => {
+  pre.scrollTop = pre.scrollHeight
 }
