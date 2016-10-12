@@ -1,8 +1,11 @@
 <template lang="pug">
-  pre
-    code(v-html="codeHtml")
+  section
+    h2 Resume
 
-    code {{ codeProgress }}
+    pre
+      code(v-html="codeHtml")
+
+      code {{ codeProgress }}
 </template>
 
 <script>

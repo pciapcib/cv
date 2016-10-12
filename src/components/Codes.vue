@@ -1,10 +1,12 @@
 <template lang="pug">
   //- template lang="pug"
-  pre
-    code(v-html="codeHtml")
-    // await
+  section
+    h2 {{ titleProgress }}
 
-    code {{ codeProgress }}
+    pre
+      code(v-html="codeHtml")
+
+      code {{ codeProgress }}
     // await
 
 </template>
@@ -15,7 +17,6 @@
 
   import stylus from 'highlight.js/lib/languages/stylus'
   import javascript from 'highlight.js/lib/languages/javascript'
-  // await
 
   import promisify from 'assets/js/promisify'
   import scrollToBottom from 'assets/js/scrollToBottom'
@@ -38,22 +39,13 @@
         blockCounter: 0,
         charCounter: 0,
         codeHtml: '',
-        codeProgress: ''
+        codeProgress: '',
+        titleProgress: ''
       }
     },
-  // await
 
     props: {
-      codesText: {
-        type: String,
-        required: true
-      },
-  // await
-
-      callback: {
-        type: Function,
-        default () {}
-      }
+      codesText: String
     },
   // await
 
@@ -65,18 +57,38 @@
 
       curBlock () {
         return this.codes[this.blockCounter]
+      },
+
+      filename () {
+        const file = this.codes[0].includes('#app')
+          ? 'App.vue'
+          : 'Codes.vue'
+
+        return file.split('')
       }
     },
   // await
 
     methods: {
       printCodes () {
-        promisify({
-          promiseNumber: this.codes.length,
-          step: this.printBlock,
-          interval: 300
-        }, () => {
+        let index = 0
 
+        const printTitle = resolve =>
+          () => {
+            this.titleProgress += this.filename[index++]
+            resolve()
+          }
+
+        promisify({
+          promiseNumber: this.filename.length,
+          step: printTitle,
+          interval: 50
+        }, () => {
+          promisify({
+            promiseNumber: this.codes.length,
+            step: this.printBlock,
+            interval: 300
+          })
         })
       },
   // await
@@ -92,7 +104,7 @@
           promisify({
             promiseNumber: this.curBlock.length,
             step: this.printChar,
-            interval: 8
+            interval: 6
           }, () => {
             this.codeProgress = ''
             this.codeHtml += hljs.highlightAuto(this.curBlock).value

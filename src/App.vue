@@ -1,26 +1,23 @@
 <template lang="pug">
   //- template lang="pug"
   #app(:class="textClasses")
-    section#resume
-      resume(
-        @add-css="addCSS",
-        @add-app="addApp",
-        @add-codes="addCodes"
-      )
+    resume#resume(
+      @add-css="addCSS",
+      @add-app="addApp",
+      @add-codes="addCodes"
+    )
     // await
 
-    section#app-vue
-      codes(
-        v-if="loadApp",
-        :codes-text="appText"
-      )
+    codes#app-vue(
+      v-if="loadApp",
+      :codes-text="appText"
+    )
     // await
 
-    section#codes-vue
-      codes(
-        v-if="loadCodes",
-        :codes-text="codesText"
-      )
+    codes#codes-vue(
+      v-if="loadCodes",
+      :codes-text="codesText"
+    )
     // await
 
 </template>
@@ -45,9 +42,8 @@
         counter: 0,
         textClasses: [],
         preLoad: [
-          'css-0',
-          'css-1',
-          'css-2'
+          'padding',
+          'color'
         ]
       }
     },
@@ -87,7 +83,7 @@
   // style lang="sass"
   $code: #abb2bf
   $code-bg: #282c34
-  $code-border: #000
+  $code-border: #111
   $link: #d19a66
   // await
 
@@ -108,14 +104,18 @@
     // await
 
     section
-      flex-basis: 30%
+      flex: 0 30%
       margin-top: 1.2%
 
+      h2
+        font-family: monospace
+        margin-top: 0
+
       pre
-        border-radius: 6px
+        border-radius: 4px
         overflow-y: auto
         white-space: pre-wrap
-        max-height: 97%
+        max-height: 91%
         word-wrap: break-word
 
         a
@@ -129,7 +129,7 @@
         right: 1.2%
 
     #resume
-      flex-basis: 40%
+      flex: 0 40%
 
       pre
         h2:first-child
@@ -139,21 +139,17 @@
           margin-bottom: 0
   // await
 
-  .css-0
+  .padding
     section
       margin-top: 1.5% !important
 
       pre
         padding: 12px
-        color: $code
-        border: 5px solid $code-border
   // await
 
-  .css-1
+  .color
     pre
+      color: $code
+      border: 3px solid $code-border
       background-color: $code-bg
-  // await
-
-  .css-2
-    pre
 </style>

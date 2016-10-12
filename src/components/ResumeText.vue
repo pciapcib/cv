@@ -6,19 +6,6 @@
     h3 Web Developer
     // await
 
-    //- ++app
-    // await
-
-    // await
-
-    // await
-
-    // await
-
-    // await
-
-    // await
-
     h3 Skills
     // await
 
@@ -26,9 +13,6 @@
       li HTML
         ul
           li Pug
-      // await
-
-      //- ++css
       // await
 
       li CSS
@@ -40,9 +24,6 @@
           li WeUI
       // await
 
-      //- ++css
-      // await
-
       li Javascript
         ul
           li jQuery
@@ -51,7 +32,24 @@
           li Node
       // await
 
-      //- ++codes
+      //- ++app
+      // await
+
+      // await
+
+      // await
+
+      // await
+
+      // await
+
+      // await
+
+      // await
+
+      // await
+
+      //- ++css
       // await
 
       li Utilities
@@ -63,14 +61,20 @@
           li Chai
       // await
 
+      //- ++css
+      // await
+
       li Tools
         ul
           li Git
           li npm
           li Photoshop
-      // await
+    // await
 
     h3 Experience
+    // await
+
+    //- ++codes
     // await
 
     ul
@@ -93,9 +97,6 @@
         ) node-zhihu-daily
         |  2016.9
         p A Zhihu Daily CLI reader by Node.js
-      // await
-
-      //- ++css
       // await
 
       li
